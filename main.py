@@ -1,4 +1,10 @@
-
+#Programmers Laure and Megan
+# Course: CS151, Dr Zelalem Yalew
+# Due Date: 2/12/24
+# Lab Assignemnt 11
+# Problem Statement: Make a program to converse ciphers into plain English
+# Data In: User input, morse code data
+# Data Out:  plain English
 def read_file_to_dict(filename):
     # Open the file for reading
 
