@@ -19,10 +19,31 @@ def get_morse_file():
     return morse_file
 
 def convert_file(morse_file, morse_dict):
-    morse_file_data = open(morse_file, 'r')
+    with open(morse_file, 'r') as morse_file_data:
+        decoded_message = []
+        for line in morse_file_data:
+            morse_words = line.strip().split(' ')
+            decoded_words = [
+                morse_dict.get(morse_char, '?')  # Replace unknown characters with '?'
+                for morse_char in morse_words
+            ]
+            decoded_message.append(''.join(decoded_words))  # Combine characters into words
+return
 
 
 
 def main():
     print(read_file_to_dict('morsecode.txt'))
+morse_file = get_morse_file()
 
+try:
+        decoded_text = convert_file(morse_file, morse_dict)
+        print("\nDecoded Message:")
+        print(decoded_text)
+    except FileNotFoundError:
+        print("Error: The file specified could not be found. Please check the file name.")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+
+if __name__ == "__main__":
+    main()
