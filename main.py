@@ -2,11 +2,15 @@
 # Course: CS151, Dr. Zee
 # Due Date: 2/12/24
 # Lab Assignment: Lab 11
-# Problem Statement: Make a program to converse ciphers into plain English
+# Problem Statement: Make a program to convert morse code ciphers into plain English
 # Data In: User input, morse code data
-# Data Out: Plain English
-# Credits:
+# Data Out: translated message in english
+# Credits: codes from the repository and class notes
+# Input Files: .txt, morse1.txt, morse2.txt, morse3.txt, and/or morsecode.txt expected
 
+# Purpose: asks the user which file to convert to a dictionary
+# Parameters: none
+# Return: morse_dict_file, string, name of file that will be converted to a dictionary
 def get_morse_dict_file():
     # ask the user which file they would like to use as a dictionary
     morse_dict_file = input('Welcome! This program converts files from morse code and outputs a new file with the translation in English. \n Which file would you like to use as the key or dictionary?')
@@ -15,12 +19,15 @@ def get_morse_dict_file():
         morse_dict_file = input('That is not a correct file. Which file would you like to use as the key or dictionary?')
     return morse_dict_file
 
+# Purpose: reads the file to a dictionary
+# Parameters: morse_dict_file, string, the name of the file that will be read into a dictionary
+# Return: morse_dict, dictionary, dictionary that converts morse code to English
 def read_file_to_dict(morse_dict_file):
     # initialize dictionary
     morse_dict = {}
     # try opening the file for reading
     try:
-        morse_data = open(filename, 'r')
+        morse_data = open(morse_dict_file, 'r')
         # Read each line, and add to morse_dict
         for line in morse_data:
             items = line.split('  ')
@@ -34,6 +41,9 @@ def read_file_to_dict(morse_dict_file):
     except FileNotFoundError:
         print('File not found.')
 
+# Purpose: asks the user which file to convert
+# Parameters: none
+# Return: morse_file, string, name of the file that the user would like converted to English
 def get_morse_file():
     # ask the user which file they would like to convert
     morse_file = input('What is the file in morse code you would like to convert?')
@@ -42,6 +52,9 @@ def get_morse_file():
         morse_file = input('That is not a conversion file. What is the file in morse code you would like to convert?')
     return morse_file
 
+# Purpose: runs characters from the morse code file through the dictionary and into a list, and then writes this translated message list to a new file
+# Parameters: morse_file (string, the name of the file in morse code that will be converted), morse_dict (dictionary, the dictionary from morse code to english)
+# Return: none
 def convert_file(morse_file, morse_dict):
     # open file for reading
     morse_file_data = open(morse_file, 'r')
@@ -72,6 +85,9 @@ def convert_file(morse_file, morse_dict):
     # closes file
     converted_file_data.close()
 
+# Purpose: asks user if they would like to convert a file again
+# Parameters: none
+# Return: none
 def get_convert_again():
     convert_again = input('Would you like to convert another file? For yes, type Y and for no, type N.').lower()
     # error checking to ensure user inputs yes or no
@@ -84,7 +100,9 @@ def get_convert_again():
     if convert_again == 'n':
         print('Process completed. Thank you for using this program!')
 
-
+# Purpose: main function
+# Parameters: none
+# Return: none
 def main():
     # asks user which file they would like to use for the dictionary
     morse_dict_file = get_morse_dict_file()
