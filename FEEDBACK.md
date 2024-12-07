@@ -65,7 +65,7 @@ if __name__ == "__main__":
 - 
 - 
 
-### Grade: R
+### Grade: E
 
-### Participation Grade: U
+### Participation Grade: s
  - If participation grade is unsatisfactory check the `NO` in the documents sections
